@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private bool                grounded;    
     private float               velocity_x;
-    private float               velocity_y;
+    private float               added_velocity_y;
 
     // Start is called before the first frame update
     private void Start()
@@ -43,12 +43,16 @@ public class Player : MonoBehaviour
                 velocity_x = 0;
 
             if(Input.GetKey("w"))
-                velocity_y = jumpSpeed;
+                added_velocity_y = jumpSpeed;
+        }
+        else
+        {
+            added_velocity_y = 0;
         }
     }
 
     private void Move()
     {
-        rb.velocity = new Vector2(velocity_x, velocity_y);
+        rb.velocity = new Vector2(velocity_x, rb.velocity.y + added_velocity_y);
     }
 }
