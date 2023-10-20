@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class ThrowBanana : MonoBehaviour
 {
+
+    [SerializeField] private GameObject banana;
+    [SerializeField] private GameObject firePoint;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -21,6 +25,6 @@ public class ThrowBanana : MonoBehaviour
 
     private void Banana()
     {
-
+        Instantiate(banana, firePoint.transform);
     }
 }
