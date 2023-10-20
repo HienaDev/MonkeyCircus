@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private float               jumpSpeed;
 
     private Rigidbody2D         rb;
+    private CircleCollider2D    groundChecker;
 
     private bool                grounded;    
     private float               velocity_x;
