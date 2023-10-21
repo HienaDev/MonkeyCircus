@@ -350,6 +350,7 @@ MonoBehaviour:
   PointB: {fileID: 778648656}
   speed: 50
   distance: 4
+  timeStopped: 1
 --- !u!61 &163972646
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1303,7 +1304,8 @@ GameObject:
   - component: {fileID: 1378510408}
   - component: {fileID: 1378510409}
   - component: {fileID: 1378510410}
-  m_Layer: 0
+  - component: {fileID: 1378510411}
+  m_Layer: 19
   m_Name: TriggerMonkey
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1385,6 +1387,21 @@ MonoBehaviour:
   monkeyLayer:
     serializedVersion: 2
     m_Bits: 2097152
+--- !u!114 &1378510411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378510407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 472c2cb9366a32d448154ba1b1f1d5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bananaOnFloorLayer:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!1 &1703530910
 GameObject:
   m_ObjectHideFlags: 0

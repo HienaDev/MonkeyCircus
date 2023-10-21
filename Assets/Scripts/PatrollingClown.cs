@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.U2D;
 using UnityEngine;
@@ -22,6 +23,11 @@ public class PatrollingClown : MonoBehaviour
 
     private Animator clownAnim;
 
+    private bool swapping = false;
+    private float justStopped;
+
+    [SerializeField] private float timeStopped;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,26 +46,48 @@ public class PatrollingClown : MonoBehaviour
         Debug.Log(initialPosition);
         Vector2 point = currentPoint.position - transform.position;
 
-        if(currentPoint == PointB.transform)
-        {
-            rb.velocity = new Vector3(speed, 0f, 0f);
-        }
-        else
-        {
-            rb.velocity = new Vector3(-speed, 0f, 0f);
-        }
+        if (!swapping)
+            if(currentPoint == PointB.transform)
+            {
+                rb.velocity = new Vector3(speed, 0f, 0f);
+            }
+            else
+            {
+                rb.velocity = new Vector3(-speed, 0f, 0f);
+            }
 
         if (Vector2.Distance(transform.position, currentPoint.position) < distance && currentPoint == PointB.transform)
         {
-               currentPoint = PointA;
+            if (!swapping)
+            {
+                swapping = true;
+                justStopped = Time.time;
+                rb.velocity = Vector3.zero;
+            }
+            if (Time.time - justStopped > timeStopped)
+            { 
+                currentPoint = PointA;
+                swapping = false;
+            }
         }
 
         if (Vector2.Distance(transform.position, currentPoint.position) < distance && currentPoint == PointA.transform)
         {
-            currentPoint = PointB;
+            if (!swapping)
+            {
+                swapping = true;
+                justStopped = Time.time;
+                rb.velocity = Vector3.zero;
+            }
+            if (Time.time - justStopped > timeStopped)
+            {
+                currentPoint = PointB;
+                swapping = false;
+            }
         }
 
         Flip();
+        Animations();
 
     }
 

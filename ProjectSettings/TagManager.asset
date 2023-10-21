@@ -23,10 +23,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - BananaTrigger
+  - "BananaNoCh\xE3o"
+  - ClownTrigger
+  - BananaComCasca
   - Player
   - Clown
   - BananaManager
