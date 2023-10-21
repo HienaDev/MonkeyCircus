@@ -58,17 +58,16 @@ public class Player : MonoBehaviour
             }
             else
                 jumpStart = false;
-        else
-            {
-                added_velocity_y = 0;
-            
-                if(Input.GetKey("w"))
-                    rb.gravityScale = 0.35f;
-                else
-                    rb.gravityScale = 1f;
-            }
         }
-        
+        else
+        {
+            added_velocity_y = 0;
+            
+            if(Input.GetKey("w"))
+                rb.gravityScale = 2.5f;
+            else
+                rb.gravityScale = 5f;
+        }
     }
 
     private void Flip()
