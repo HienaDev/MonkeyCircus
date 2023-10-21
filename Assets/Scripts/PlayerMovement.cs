@@ -16,10 +16,16 @@ public class Player : MonoBehaviour
     private float               velocity_x;
     private float               added_velocity_y;
 
+    private bool isFacingRight = true;
+
+    private SpriteRenderer              playerSprite;
+
     // Start is called before the first frame update
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+        playerSprite = gameObject.GetComponent<SpriteRenderer>();
 
         //Start Grounded as test until jumping is implemented and solved
         grounded = true;      
@@ -30,6 +36,7 @@ public class Player : MonoBehaviour
     {
         ReadInput();
         Move();
+        Flip();
     }
 
     private void ReadInput()
@@ -45,10 +52,21 @@ public class Player : MonoBehaviour
 
             if(Input.GetKey("w"))
                 added_velocity_y = jumpSpeed;
+            else
+            {
+                added_velocity_y = 0;
+            }
         }
-        else
+        
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && velocity_x < 0f || !isFacingRight && velocity_x > 0f)
         {
-            added_velocity_y = 0;
+            isFacingRight = !isFacingRight;
+
+            transform.Rotate(0f, 180f, 0f);
         }
     }
 

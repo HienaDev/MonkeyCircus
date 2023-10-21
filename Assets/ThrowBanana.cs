@@ -8,10 +8,12 @@ public class ThrowBanana : MonoBehaviour
     [SerializeField] private GameObject banana;
     [SerializeField] private GameObject firePoint;
 
+    private GameObject bananaManager;
+
     // Start is called before the first frame update
     private void Start()
     {
-        
+        bananaManager = FindAnyObjectByType<BananaManager>().gameObject;
     }
 
     // Update is called once per frame
@@ -25,6 +27,6 @@ public class ThrowBanana : MonoBehaviour
 
     private void Banana()
     {
-        Instantiate(banana, firePoint.transform);
+        Instantiate(banana, firePoint.transform.position, Quaternion.identity, bananaManager.transform);
     }
 }
