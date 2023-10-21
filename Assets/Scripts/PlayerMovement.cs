@@ -26,13 +26,19 @@ public class Player : MonoBehaviour
     private SpriteRenderer                              playerSprite;
 
     [SerializeField] private Animator                   playerAnimator;
+    [SerializeField] private Sprite                     deadSprite;
 
     private bool dead = false;
+
+    private float justDied;
+    [SerializeField] float frozenScreenTime;
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+
+
 
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -40,11 +46,19 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        CheckGround();
-        ReadInput();
-        Move();
-        Flip();
-        Animations();
+        if(!dead)
+        { 
+            CheckGround();
+            ReadInput();
+            Move();
+            Flip();
+            Animations();
+        }
+        else if (Time.realtimeSinceStartup - justDied > frozenScreenTime)
+        {
+            Time.timeScale = 1.0f;   
+        }
+
     }
 
     private void ReadInput()
@@ -122,5 +136,17 @@ public class Player : MonoBehaviour
         grounded = groundChecker.grounded;
     }
 
-    //private void SetDead() 
+    public void SetDead()
+    {
+        dead = true;
+        rb.velocity = new Vector3(0f, jumpSpeed, 0f);
+
+        playerAnimator.SetTrigger("dead");
+
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        justDied = Time.realtimeSinceStartup;
+        Time.timeScale = 0.0f;
+    }
+
 }
