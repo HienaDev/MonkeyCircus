@@ -44,15 +44,15 @@ public class Player : MonoBehaviour
 
     private void ReadInput()
     {
+        if (!(Input.GetKey("a") || Input.GetKey("d")))
+            velocity_x = 0;
+        if (Input.GetKey("a") && !(Input.GetKey("d")))
+            velocity_x = -moveSpeed;
+        if (Input.GetKey("d") && !(Input.GetKey("a")))
+            velocity_x = moveSpeed;
+        
         if (grounded)
         {
-            if (Input.GetKey("a") && !(Input.GetKey("d")))
-                velocity_x = -moveSpeed;
-            if (Input.GetKey("d") && !(Input.GetKey("a")))
-                velocity_x = moveSpeed;
-            if (!(Input.GetKey("a") || Input.GetKey("d")))
-                velocity_x = 0;
-
             if (Input.GetKeyDown("w"))
             {
                 jumpStart = true;
