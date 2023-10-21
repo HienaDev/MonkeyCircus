@@ -11,6 +11,8 @@ public class ThrowBanana : MonoBehaviour
     [SerializeField] private float initialXVelocity;
     [SerializeField] private float initialYVelocity;
 
+    [SerializeField] private AudioSource throwBananaSound;
+
     private GameObject bananaManager;
 
     private bool readyToThrow = true;
@@ -27,6 +29,7 @@ public class ThrowBanana : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && readyToThrow)
         {
             Banana();
+            throwBananaSound.Play();
         }
     }
 
@@ -40,4 +43,6 @@ public class ThrowBanana : MonoBehaviour
     }
 
     public void ReadyBanana() => readyToThrow = true;
+
+    public bool GetReadyBanana() => readyToThrow;
 }

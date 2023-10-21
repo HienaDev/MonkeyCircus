@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
-using UnityEditor.U2D;
 using UnityEngine;
 
 public class PatrollingClown : MonoBehaviour
 {
 
 
-    static int clownCount = 0;
+    public static int clownCount = 0;
 
     private Vector3 initialPosition;
     [SerializeField] private Transform PointA;

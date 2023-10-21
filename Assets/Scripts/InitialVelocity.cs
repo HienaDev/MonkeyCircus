@@ -30,6 +30,7 @@ public class InitialVelocity : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
         Instantiate(deadBanana, transform.position, Quaternion.identity, bananaManager.transform);
         Destroy(gameObject);
     }

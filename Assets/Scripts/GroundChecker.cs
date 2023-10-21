@@ -14,7 +14,7 @@ public class GroundChecker : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(grounded);
+        //Debug.Log(grounded);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
