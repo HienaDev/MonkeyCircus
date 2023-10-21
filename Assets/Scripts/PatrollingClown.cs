@@ -8,7 +8,7 @@ public class PatrollingClown : MonoBehaviour
 {
 
 
-    static int clownCount = 0;
+    public static int clownCount = 0;
 
     private Vector3 initialPosition;
     [SerializeField] private Transform PointA;

@@ -243,6 +243,7 @@ MonoBehaviour:
   firePoint: {fileID: 7351848790488233162}
   initialXVelocity: 80
   initialYVelocity: 100
+  throwBananaSound: {fileID: 0}
 --- !u!50 &802023776517884796
 Rigidbody2D:
   serializedVersion: 4
@@ -284,8 +285,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 100
   jumpSpeed: 200
+  bouncySpeed: 0
   groundChecker: {fileID: 8969675900630847471}
   playerAnimator: {fileID: 3977921088953190486}
+  deadSprite: {fileID: 0}
+  jump: {fileID: 0}
+  frozenScreenTime: 0
 --- !u!95 &3977921088953190486
 Animator:
   serializedVersion: 5
@@ -322,6 +327,7 @@ MonoBehaviour:
   bananaOnFloorLayer:
     serializedVersion: 2
     m_Bits: 131072
+  pickUpBanana: {fileID: 0}
 --- !u!1 &7351848790488233162
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +353,7 @@ Transform:
   m_GameObject: {fileID: 7351848790488233162}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.9, y: 4.5, z: 0}
+  m_LocalPosition: {x: 12.8, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

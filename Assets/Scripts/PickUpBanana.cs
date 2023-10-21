@@ -6,6 +6,9 @@ public class PickUpBanana : MonoBehaviour
 {
 
     [SerializeField] private LayerMask bananaOnFloorLayer;
+
+    [SerializeField] private AudioSource pickUpBanana;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +31,8 @@ public class PickUpBanana : MonoBehaviour
         if (x == bananaOnFloorLayer.value)
         {
             gameObject.GetComponent<ThrowBanana>().ReadyBanana();
+
+            pickUpBanana.Play();
 
             Destroy(collision.gameObject.transform.parent.gameObject);
         }

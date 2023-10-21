@@ -28,7 +28,12 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator                   playerAnimator;
     [SerializeField] private Sprite                     deadSprite;
 
+    [SerializeField] private AudioSource jump;
+
+
     private bool dead = false;
+
+    private bool dance = false;
 
     private float justDied;
     [SerializeField] float frozenScreenTime;
@@ -46,7 +51,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if(!dead)
+        if(!dead && !dance)
         { 
             CheckGround();
             ReadInput();
@@ -84,6 +89,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown("w"))
             {
+                jump.Play();
                 jumpStart = true;
                 added_velocity_y = jumpSpeed;
             }
@@ -147,6 +153,13 @@ public class Player : MonoBehaviour
 
         justDied = Time.realtimeSinceStartup;
         Time.timeScale = 0.0f;
+    }
+
+    public void SetDance()
+    {
+        dance = true;
+        playerAnimator.SetTrigger("dance");
+        rb.velocity = Vector3.zero;
     }
 
 }
