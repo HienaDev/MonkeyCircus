@@ -459,6 +459,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpSpeed: 20
+  groundChecker: {fileID: 248623647}
+  playerAnimator: {fileID: 0}
 --- !u!50 &2089756815
 Rigidbody2D:
   serializedVersion: 4

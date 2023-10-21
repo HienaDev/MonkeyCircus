@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private float                       jumpSpeed;
 
     private Rigidbody2D                 rb;
-    private GroundChecker               groundChecker;
+    [SerializeField] private GroundChecker               groundChecker;
 
     private bool                        grounded;
     private bool                        jumpStart;
@@ -22,11 +22,12 @@ public class Player : MonoBehaviour
 
     private SpriteRenderer              playerSprite;
 
+    [SerializeField] private Animator playerAnimator;
+
     // Start is called before the first frame update
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-        groundChecker = gameObject.transform.Find("GroundChecker").GetComponent<GroundChecker>();
 
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
     }
@@ -38,36 +39,40 @@ public class Player : MonoBehaviour
         ReadInput();
         Move();
         Flip();
+        Animations();
     }
 
     private void ReadInput()
     {
-        if(grounded)
+        if (grounded)
         {
-            if(Input.GetKey("a") && !(Input.GetKey("d")))
+            if (Input.GetKey("a") && !(Input.GetKey("d")))
                 velocity_x = -moveSpeed;
-            if(Input.GetKey("d") && !(Input.GetKey("a")))
+            if (Input.GetKey("d") && !(Input.GetKey("a")))
                 velocity_x = moveSpeed;
-            if(!(Input.GetKey("a") || Input.GetKey("d")))
+            if (!(Input.GetKey("a") || Input.GetKey("d")))
                 velocity_x = 0;
 
-            if(Input.GetKeyDown("w"))
+            if (Input.GetKeyDown("w"))
             {
                 jumpStart = true;
                 added_velocity_y = jumpSpeed;
             }
             else
-                jumpStart = false;
-        else
             {
-                added_velocity_y = 0;
-            
-                if(Input.GetKey("w"))
-                    rb.gravityScale = 0.35f;
-                else
-                    rb.gravityScale = 1f;
+                jumpStart = false;
             }
         }
+        else
+        {
+            added_velocity_y = 0;
+
+            if (Input.GetKey("w"))
+                rb.gravityScale = 0.35f;
+            else
+                rb.gravityScale = 1f;
+        }
+        
         
     }
 
@@ -79,6 +84,11 @@ public class Player : MonoBehaviour
 
             transform.Rotate(0f, 180f, 0f);
         }
+    }
+
+    private void Animations()
+    {
+        playerAnimator.SetFloat("moveSpeedX", Mathf.Abs(rb.velocity.x));
     }
 
     private void Move()

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b294f26c531b60409973579c8a05024
+guid: b3250b7c6e9e51043957ae5bea1c24d6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,12 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: palhaco_walking_sheet_0
+      name: ballon_idle_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
+        width: 12
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -137,19 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 54705de6e5711bc459369eb5923f4b56
-      internalID: -1725753049
+      spriteID: f3427a98b7ce9e0408ca7174a788236a
+      internalID: -1774573582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: palhaco_walking_sheet_1
+      name: ballon_idle_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 12
         y: 0
-        width: 32
+        width: 12
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -158,19 +158,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71b789063d28d3842b0cae54abec71ca
-      internalID: -1286252776
+      spriteID: 699c7c43146c7d24db6b50f9cac82dc3
+      internalID: -620123078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: palhaco_walking_sheet_2
+      name: ballon_idle_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 24
         y: 0
-        width: 32
+        width: 12
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -179,19 +179,124 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff51dd9ef9b195c4e83706c2bfc6cfed
-      internalID: -443137231
+      spriteID: 084e2261936a5724eaceed84952cc773
+      internalID: -52494314
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: palhaco_walking_sheet_3
+      name: ballon_idle_3
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f121e97a677fade438f14cffe8ed459b
+      internalID: 518191156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon_idle_4
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 867516c1154032644b495e55cab78d7b
+      internalID: -933823855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon_idle_5
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93225a92da6d894a9e17b2f404f210a
+      internalID: 928783810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon_idle_6
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 771bf7fcd1bc72b4b8f6fc38a37702b1
+      internalID: 1060223659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon_idle_7
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb0cbdd041801f3478b303f0b727e6dd
+      internalID: 656623058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon_idle_8
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 32
+        width: 12
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -200,8 +305,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce86ddc751ea9bf4fbbb41d046ff7351
-      internalID: -339689850
+      spriteID: 31e825aabe657c8438c0310ebd4cf50a
+      internalID: -689269000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon_idle_9
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf6a63b1a3a6344d9c20f5e55d4d4ee
+      internalID: 1767124103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ballon_idle_10
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 0
+        width: 12
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a623620b87347945b1b7462e38858e0
+      internalID: -1089005911
       vertices: []
       indices: 
       edges: []
@@ -217,10 +364,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      palhaco_walking_sheet_0: -1725753049
-      palhaco_walking_sheet_1: -1286252776
-      palhaco_walking_sheet_2: -443137231
-      palhaco_walking_sheet_3: -339689850
+      ballon_idle_0: -1774573582
+      ballon_idle_1: -620123078
+      ballon_idle_10: -1089005911
+      ballon_idle_2: -52494314
+      ballon_idle_3: 518191156
+      ballon_idle_4: -933823855
+      ballon_idle_5: 928783810
+      ballon_idle_6: 1060223659
+      ballon_idle_7: 656623058
+      ballon_idle_8: -689269000
+      ballon_idle_9: 1767124103
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
