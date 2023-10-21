@@ -49,6 +49,9 @@ public class Player : MonoBehaviour
 
     private void ReadInput()
     {
+        if(Input.GetKeyDown("escape"))
+            Application.Quit(); 
+
         if (!(Input.GetKey("a") || Input.GetKey("d")))
             velocity_x = 0;
         if (Input.GetKey("a") && !(Input.GetKey("d")))
