@@ -791,6 +791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   banana: {fileID: 3824646664988015916, guid: 7d143007b28a50f499e686cf5d3be3a0, type: 3}
   firePoint: {fileID: 1972060798}
+  initialXVelocity: 80
+  initialYVelocity: 100
 --- !u!61 &1262782945
 BoxCollider2D:
   m_ObjectHideFlags: 0

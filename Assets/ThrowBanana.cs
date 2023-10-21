@@ -8,6 +8,10 @@ public class ThrowBanana : MonoBehaviour
     [SerializeField] private GameObject banana;
     [SerializeField] private GameObject firePoint;
 
+
+    [SerializeField] private float initialXVelocity;
+    [SerializeField] private float initialYVelocity;
+
     private GameObject bananaManager;
 
     // Start is called before the first frame update
@@ -27,6 +31,8 @@ public class ThrowBanana : MonoBehaviour
 
     private void Banana()
     {
-        Instantiate(banana, firePoint.transform.position, Quaternion.identity, bananaManager.transform);
+         GameObject temp = Instantiate(banana, firePoint.transform.position, Quaternion.identity, bananaManager.transform);
+
+        temp.GetComponent<Rigidbody2D>().velocity = new Vector3(initialYVelocity * gameObject.transform.right.x, initialYVelocity, 0f);
     }
 }
