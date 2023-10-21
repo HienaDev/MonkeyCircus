@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 802023776517884796}
   - component: {fileID: 8629837819800974037}
   - component: {fileID: 3977921088953190486}
+  - component: {fileID: 7299408417963262452}
   m_Layer: 21
   m_Name: Monkey
   m_TagString: Untagged
@@ -296,6 +297,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7299408417963262452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4676047711160554859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ffefc6484c9df49bae824a3b629e27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bananaOnFloorLayer:
+    serializedVersion: 2
+    m_Bits: 131072
 --- !u!1 &7351848790488233162
 GameObject:
   m_ObjectHideFlags: 0

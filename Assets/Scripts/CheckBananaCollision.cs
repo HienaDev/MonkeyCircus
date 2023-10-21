@@ -9,11 +9,14 @@ public class CheckBananaCollision : MonoBehaviour
     private Animator clownAnim;
     private PatrollingClown clownScript;
 
+
     private void Start()
     {
         clownAnim = GetComponentInParent<Animator>();
         clownScript = GetComponentInParent<PatrollingClown>();
     }
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

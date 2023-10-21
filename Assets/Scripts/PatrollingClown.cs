@@ -30,6 +30,9 @@ public class PatrollingClown : MonoBehaviour
 
     private bool tripped = false;
 
+    private float justTripped;
+    private float timeToDie = 2.5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +97,13 @@ public class PatrollingClown : MonoBehaviour
             Flip();
             Animations();
         }
+        else
+        {
+            if(Time.time - justTripped > timeToDie)
+            {
+                Destroy(gameObject);
+            }
+        }
 
     }
 
@@ -115,6 +125,7 @@ public class PatrollingClown : MonoBehaviour
     public void SetTripped(bool trip)
     {
         tripped = trip;
+        justTripped = Time.time;
         rb.velocity = Vector3.zero;
     }
 }

@@ -8,11 +8,12 @@ public class ThrowBanana : MonoBehaviour
     [SerializeField] private GameObject banana;
     [SerializeField] private GameObject firePoint;
 
-
     [SerializeField] private float initialXVelocity;
     [SerializeField] private float initialYVelocity;
 
     private GameObject bananaManager;
+
+    private bool readyToThrow = true;
 
     // Start is called before the first frame update
     private void Start()
@@ -23,7 +24,7 @@ public class ThrowBanana : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && readyToThrow)
         {
             Banana();
         }
@@ -31,8 +32,12 @@ public class ThrowBanana : MonoBehaviour
 
     private void Banana()
     {
-         GameObject temp = Instantiate(banana, firePoint.transform.position, Quaternion.identity, bananaManager.transform);
+        readyToThrow = false;
+
+        GameObject temp = Instantiate(banana, firePoint.transform.position, Quaternion.identity, bananaManager.transform);
 
         temp.GetComponent<Rigidbody2D>().velocity = new Vector3(initialYVelocity * gameObject.transform.right.x, initialYVelocity, 0f);
     }
+
+    public void ReadyBanana() => readyToThrow = true;
 }
