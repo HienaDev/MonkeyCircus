@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -29,25 +28,30 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator                   playerAnimator;
     [SerializeField] private Sprite                     deadSprite;
 
-    [SerializeField] private AudioSource jump;
+    [SerializeField] private AudioSource                jump;
+
+    private static bool                                 modernControls;
+    private string                                      verticalInput;
+    private string                                      leftInput;
+    private string                                      rightInput;
+    public string                                       interactionInput { get; private set; }
 
 
-    private bool dead = false;
+    private bool                                        dead = false;
 
-    private bool dance = false;
+    private bool                                        dance = false;
 
-    private float justDied;
-    [SerializeField] private float frozenScreenTime;
-    [SerializeField] private float resetTimer;
+    private float                                       justDied;
+    [SerializeField] float                              frozenScreenTime;
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
-
-
-
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
+
+        SetControls(false);
+        DefineControls(modernControls);
     }
 
     // Update is called once per frame
@@ -61,10 +65,6 @@ public class Player : MonoBehaviour
             Flip();
             Animations();
         }
-        else if(Time.realtimeSinceStartup - justDied > resetTimer)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
         else if (Time.realtimeSinceStartup - justDied > frozenScreenTime)
         {
             Time.timeScale = 1.0f;   
@@ -77,11 +77,11 @@ public class Player : MonoBehaviour
         if(Input.GetKeyDown("escape"))
             Application.Quit(); 
 
-        if (!(Input.GetKey("a") || Input.GetKey("d")))
+        if (!(Input.GetKey(leftInput) || Input.GetKey(rightInput)))
             velocity_x = 0;
-        if (Input.GetKey("a") && !(Input.GetKey("d")))
+        if (Input.GetKey(leftInput) && !(Input.GetKey(rightInput)))
             velocity_x = -moveSpeed;
-        if (Input.GetKey("d") && !(Input.GetKey("a")))
+        if (Input.GetKey(rightInput) && !(Input.GetKey(leftInput)))
             velocity_x = moveSpeed;
 
         if(groundChecker.bouncy)
@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
         
         if (grounded)
         {
-            if (Input.GetKeyDown("w"))
+            if (Input.GetKeyDown(verticalInput))
             {
                 jump.Play();
                 jumpStart = true;
@@ -106,7 +106,7 @@ public class Player : MonoBehaviour
         {
             added_velocity_y = 0;
 
-            if(Input.GetKey("w"))
+            if(Input.GetKey(verticalInput))
                 rb.gravityScale = 2.5f;
             else
                 rb.gravityScale = 5f;
@@ -141,12 +141,6 @@ public class Player : MonoBehaviour
         }
         else
             rb.velocity = new Vector2(velocity_x, rb.velocity.y + added_velocity_y);
-
-        if (rb.velocity.y > 300f)
-        {
-            rb.velocity = new Vector2(velocity_x, 300f);
-        }
-
     }
 
     private void CheckGround()
@@ -174,4 +168,26 @@ public class Player : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
+    private void DefineControls(bool modern)
+    {
+        if(modern)
+        {
+            verticalInput = "w";
+            leftInput = "a";
+            rightInput = "d";
+            interactionInput = "e";
+        }
+        else
+        {
+            verticalInput = "space";
+            leftInput = "o";
+            rightInput = "p";
+            interactionInput = "z";
+        }
+    }
+
+    public static void SetControls(bool modern)
+    {
+        modernControls = modern;
+    }
 }
