@@ -984,8 +984,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827ff2293bdb92c45a8b2e010ac31a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 80
-  jumpSpeed: 50
+  moveSpeed: 100
+  jumpSpeed: 200
   groundChecker: {fileID: 1947846105}
   playerAnimator: {fileID: 1262782948}
 --- !u!95 &1262782948
