@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThrowBanana : MonoBehaviour
 {
+    private Player player;
 
     [SerializeField] private GameObject banana;
     [SerializeField] private GameObject firePoint;
@@ -21,12 +22,13 @@ public class ThrowBanana : MonoBehaviour
     private void Start()
     {
         bananaManager = FindAnyObjectByType<BananaManager>().gameObject;
+        player = gameObject.GetComponent<Player>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && readyToThrow)
+        if (Input.GetKeyDown(player.interactionInput) && readyToThrow)
         {
             Banana();
             throwBananaSound.Play();
