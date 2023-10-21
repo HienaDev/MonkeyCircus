@@ -20,6 +20,8 @@ public class PatrollingClown : MonoBehaviour
 
     private Transform currentPoint;
 
+    private Animator clownAnim;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,8 @@ public class PatrollingClown : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector3(speed, 0f, 0f);
         currentPoint = PointB;
+
+        clownAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -67,5 +71,10 @@ public class PatrollingClown : MonoBehaviour
 
             transform.Rotate(0f, 180f, 0f);
         }
+    }
+
+    private void Animations()
+    {
+        clownAnim.SetFloat("moveSpeedX", Mathf.Abs(rb.velocity.x));
     }
 }
