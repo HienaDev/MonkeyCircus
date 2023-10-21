@@ -29,6 +29,7 @@ public class CheckBananaCollision : MonoBehaviour
         {
             clownScript.SetTripped(true);
             clownAnim.SetTrigger("Tripped");
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }
