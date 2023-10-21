@@ -19,7 +19,7 @@ public class GroundChecker : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Ground")
+        if(other.gameObject.tag == "Ground")    
             grounded = true;
 
         if(other.gameObject.tag == "Bouncy")

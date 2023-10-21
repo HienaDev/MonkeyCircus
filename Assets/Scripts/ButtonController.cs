@@ -10,7 +10,7 @@ public class ButtonController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");  
+        SceneManager.LoadScene("Tutorial");  
     }
 
     public void Quit()

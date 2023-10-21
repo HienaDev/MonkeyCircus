@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -36,7 +37,8 @@ public class Player : MonoBehaviour
     private bool dance = false;
 
     private float justDied;
-    [SerializeField] float frozenScreenTime;
+    [SerializeField] private float frozenScreenTime;
+    [SerializeField] private float resetTimer;
 
     // Start is called before the first frame update
     private void Start()
@@ -58,6 +60,10 @@ public class Player : MonoBehaviour
             Move();
             Flip();
             Animations();
+        }
+        else if(Time.realtimeSinceStartup - justDied > resetTimer)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         else if (Time.realtimeSinceStartup - justDied > frozenScreenTime)
         {
@@ -135,6 +141,12 @@ public class Player : MonoBehaviour
         }
         else
             rb.velocity = new Vector2(velocity_x, rb.velocity.y + added_velocity_y);
+
+        if (rb.velocity.y > 300f)
+        {
+            rb.velocity = new Vector2(velocity_x, 300f);
+        }
+
     }
 
     private void CheckGround()
