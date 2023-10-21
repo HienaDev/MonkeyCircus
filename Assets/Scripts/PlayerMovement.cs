@@ -8,11 +8,14 @@ public class Player : MonoBehaviour
     private float                                       moveSpeed;
     [SerializeField]
     private float                                       jumpSpeed;
+    [SerializeField]
+    private float                                       bouncySpeed;
 
     private Rigidbody2D                                 rb;
     [SerializeField] private GroundChecker              groundChecker;
 
     private bool                                        grounded;
+    private bool                                        bouncy;
     private bool                                        jumpStart;
 
     private float                                       velocity_x;
@@ -50,6 +53,13 @@ public class Player : MonoBehaviour
             velocity_x = -moveSpeed;
         if (Input.GetKey("d") && !(Input.GetKey("a")))
             velocity_x = moveSpeed;
+
+        if(groundChecker.bouncy)
+        {
+            bouncy = true;
+            grounded = false;
+            groundChecker.ResetBouncy();
+        }
         
         if (grounded)
         {
@@ -91,8 +101,15 @@ public class Player : MonoBehaviour
     {
         if(added_velocity_y > 0 && !jumpStart)
             added_velocity_y = 0;
-
-        rb.velocity = new Vector2(velocity_x, rb.velocity.y + added_velocity_y);
+            
+        if(bouncy)
+        {
+            added_velocity_y = bouncySpeed;
+            rb.velocity = new Vector2(velocity_x, added_velocity_y);
+            bouncy = false;
+        }
+        else
+            rb.velocity = new Vector2(velocity_x, rb.velocity.y + added_velocity_y);
     }
 
     private void CheckGround()
