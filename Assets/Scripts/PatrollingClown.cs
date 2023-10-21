@@ -8,6 +8,9 @@ using UnityEngine;
 public class PatrollingClown : MonoBehaviour
 {
 
+
+    static int clownCount = 0;
+
     private Vector3 initialPosition;
     [SerializeField] private Transform PointA;
     [SerializeField] private Transform PointB;
@@ -37,6 +40,7 @@ public class PatrollingClown : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        clownCount++;
         initialPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector3(speed, 0f, 0f);
@@ -48,6 +52,7 @@ public class PatrollingClown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(clownCount);
         if (!tripped)
         {
 
@@ -124,6 +129,7 @@ public class PatrollingClown : MonoBehaviour
 
     public void SetTripped(bool trip)
     {
+        clownCount--;
         tripped = trip;
         justTripped = Time.time;
         rb.velocity = Vector3.zero;
