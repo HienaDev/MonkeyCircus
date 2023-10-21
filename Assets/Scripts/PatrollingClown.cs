@@ -28,6 +28,8 @@ public class PatrollingClown : MonoBehaviour
 
     [SerializeField] private float timeStopped;
 
+    private bool tripped = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,51 +45,55 @@ public class PatrollingClown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(initialPosition);
-        Vector2 point = currentPoint.position - transform.position;
-
-        if (!swapping)
-            if(currentPoint == PointB.transform)
-            {
-                rb.velocity = new Vector3(speed, 0f, 0f);
-            }
-            else
-            {
-                rb.velocity = new Vector3(-speed, 0f, 0f);
-            }
-
-        if (Vector2.Distance(transform.position, currentPoint.position) < distance && currentPoint == PointB.transform)
+        if (!tripped)
         {
-            if (!swapping)
-            {
-                swapping = true;
-                justStopped = Time.time;
-                rb.velocity = Vector3.zero;
-            }
-            if (Time.time - justStopped > timeStopped)
-            { 
-                currentPoint = PointA;
-                swapping = false;
-            }
-        }
 
-        if (Vector2.Distance(transform.position, currentPoint.position) < distance && currentPoint == PointA.transform)
-        {
-            if (!swapping)
-            {
-                swapping = true;
-                justStopped = Time.time;
-                rb.velocity = Vector3.zero;
-            }
-            if (Time.time - justStopped > timeStopped)
-            {
-                currentPoint = PointB;
-                swapping = false;
-            }
-        }
+        
+            Vector2 point = currentPoint.position - transform.position;
 
-        Flip();
-        Animations();
+            if (!swapping)
+                if(currentPoint == PointB.transform)
+                {
+                    rb.velocity = new Vector3(speed, 0f, 0f);
+                }
+                else
+                {
+                    rb.velocity = new Vector3(-speed, 0f, 0f);
+                }
+
+            if (Vector2.Distance(transform.position, currentPoint.position) < distance && currentPoint == PointB.transform)
+            {
+                if (!swapping)
+                {
+                    swapping = true;
+                    justStopped = Time.time;
+                    rb.velocity = Vector3.zero;
+                }
+                if (Time.time - justStopped > timeStopped)
+                { 
+                    currentPoint = PointA;
+                    swapping = false;
+                }
+            }
+
+            if (Vector2.Distance(transform.position, currentPoint.position) < distance && currentPoint == PointA.transform)
+            {
+                if (!swapping)
+                {
+                    swapping = true;
+                    justStopped = Time.time;
+                    rb.velocity = Vector3.zero;
+                }
+                if (Time.time - justStopped > timeStopped)
+                {
+                    currentPoint = PointB;
+                    swapping = false;
+                }
+            }
+
+            Flip();
+            Animations();
+        }
 
     }
 
@@ -104,5 +110,11 @@ public class PatrollingClown : MonoBehaviour
     private void Animations()
     {
         clownAnim.SetFloat("moveSpeedX", Mathf.Abs(rb.velocity.x));
+    }
+
+    public void SetTripped(bool trip)
+    {
+        tripped = trip;
+        rb.velocity = Vector3.zero;
     }
 }
