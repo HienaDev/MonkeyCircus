@@ -31,7 +31,7 @@ public class PatrollingClown : MonoBehaviour
     private bool tripped = false;
 
     private float justTripped;
-    private float timeToDie = 2.5f;
+    private float timeToDie = 3f;
 
 
     // Start is called before the first frame update
