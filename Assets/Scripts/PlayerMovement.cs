@@ -5,24 +5,30 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float               moveSpeed;
+    private float                       moveSpeed;
     [SerializeField]
-    private float               jumpSpeed;
+    private float                       jumpSpeed;
 
-    private Rigidbody2D         rb;
-    private GroundChecker       groundChecker;
+    private Rigidbody2D                 rb;
+    private GroundChecker               groundChecker;
 
-    private bool                grounded;
-    private bool                jumpStart;
+    private bool                        grounded;
+    private bool                        jumpStart;
 
-    private float               velocity_x;
-    private float               added_velocity_y;
+    private float                       velocity_x;
+    private float                       added_velocity_y;
+
+    private bool                        isFacingRight = true;
+
+    private SpriteRenderer              playerSprite;
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         groundChecker = gameObject.transform.Find("GroundChecker").GetComponent<GroundChecker>();
+
+        playerSprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,6 +37,7 @@ public class Player : MonoBehaviour
         CheckGround();
         ReadInput();
         Move();
+        Flip();
     }
 
     private void ReadInput()
@@ -51,15 +58,26 @@ public class Player : MonoBehaviour
             }
             else
                 jumpStart = false;
-        }
         else
-        {
-            added_velocity_y = 0;
+            {
+                added_velocity_y = 0;
             
-            if(Input.GetKey("w"))
-                rb.gravityScale = 0.35f;
-            else
-                rb.gravityScale = 1f;
+                if(Input.GetKey("w"))
+                    rb.gravityScale = 0.35f;
+                else
+                    rb.gravityScale = 1f;
+            }
+        }
+        
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && velocity_x < 0f || !isFacingRight && velocity_x > 0f)
+        {
+            isFacingRight = !isFacingRight;
+
+            transform.Rotate(0f, 180f, 0f);
         }
     }
 

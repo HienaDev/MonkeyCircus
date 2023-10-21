@@ -7,9 +7,6 @@ public class InitialVelocity : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    [SerializeField] private float initialXVelocity;
-    [SerializeField] private float initialYVelocity;
-
     [SerializeField] private float rotationSpeed;
 
     [SerializeField] private GameObject deadBanana;
@@ -22,7 +19,7 @@ public class InitialVelocity : MonoBehaviour
 
         bananaManager = FindAnyObjectByType<BananaManager>().gameObject;
 
-        rb.velocity = new Vector3(initialYVelocity, initialYVelocity, 0f);
+       // rb.velocity = new Vector3(initialYVelocity, initialYVelocity, 0f);
     }
 
     // Update is called once per frame
