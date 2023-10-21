@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Animator                   playerAnimator;
 
+    private bool dead = false;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -99,4 +101,6 @@ public class Player : MonoBehaviour
     {
         grounded = groundChecker.grounded;
     }
+
+    //private void SetDead() 
 }
