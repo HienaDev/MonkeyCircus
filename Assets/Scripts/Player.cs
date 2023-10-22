@@ -50,7 +50,6 @@ public class Player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
 
-        SetControls(true);
         DefineControls(modernControls);
     }
 
