@@ -30,7 +30,7 @@ public class ScoreHandler : MonoBehaviour
         int timeBonus = baseTimeBonus * timeComparison;
     }
 
-    public void AddPoints(int value)
+    public static void AddPoints(int value)
     {
         currentScore += value;
     }

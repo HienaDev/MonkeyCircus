@@ -23,8 +23,8 @@ public class Timer : MonoBehaviour
     void Update()
     {
         if (Mathf.FloorToInt(Time.time % 60).ToString().Length > 1)
-            text.text = "0" + Mathf.FloorToInt(Time.time / 60).ToString() + " : " + Mathf.FloorToInt(Time.time % 60).ToString();
+            text.text = "0" + Mathf.FloorToInt(Time.time / 60).ToString() + ":" + Mathf.FloorToInt(Time.time % 60).ToString();
         else
-            text.text = "0" + Mathf.FloorToInt(Time.time / 60).ToString() + " : 0" + Mathf.FloorToInt(Time.time % 60).ToString();
+            text.text = "0" + Mathf.FloorToInt(Time.time / 60).ToString() + ":0" + Mathf.FloorToInt(Time.time % 60).ToString();
     }
 }

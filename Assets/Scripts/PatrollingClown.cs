@@ -105,6 +105,7 @@ public class PatrollingClown : MonoBehaviour
         {
             if(Time.time - justTripped > timeToDie)
             {
+                ScoreHandler.AddPoints(500);
                 Destroy(gameObject);
             }
         }
