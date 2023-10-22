@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class ChangeBananaState : MonoBehaviour
 {
-    [SerializeField] private ThrowBanana        monkey;
+    private ThrowBanana                         monkey;
 
     [SerializeField] private SpriteRenderer     banana_on;
     [SerializeField] private SpriteRenderer     banana_off;
 
+    private void Start()
+    {
+        monkey = GameObject.Find("Monkey").GetComponent<ThrowBanana>();
+    }
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (monkey.GetReadyBanana())
         {
