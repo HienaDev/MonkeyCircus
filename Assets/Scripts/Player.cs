@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
             Flip();
             Animations();
         }
-        else if(Time.realtimeSinceStartup - justDied > resetTimer)
+        else if(Time.realtimeSinceStartup - justDied > resetTimer && !dance)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

@@ -4232,6 +4232,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: feee3250267e49247afe31fb6952a16d, type: 3}
     - target: {fileID: 8629837819800974037, guid: da0fb01e437d67e4083e4408ae1e52e7, type: 3}
+      propertyPath: resetTimer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629837819800974037, guid: da0fb01e437d67e4083e4408ae1e52e7, type: 3}
       propertyPath: victoryMusic
       value: 
       objectReference: {fileID: 1720809033}
