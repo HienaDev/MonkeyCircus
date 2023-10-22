@@ -1309,17 +1309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827ff2293bdb92c45a8b2e010ac31a03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &797595849 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7651681264722044453, guid: da0fb01e437d67e4083e4408ae1e52e7, type: 3}
-  m_PrefabInstance: {fileID: 3365781911240319470}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c46e5946b6411d440a0457fce6356e33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &845770335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2436,7 +2425,7 @@ GameObject:
   - component: {fileID: 1339474284}
   m_Layer: 14
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4636,7 +4625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806801332dd4c3944925f9d842e4a82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monkey: {fileID: 797595849}
   banana_on: {fileID: 2111214034}
   banana_off: {fileID: 413706952}
 --- !u!4 &1930153006
