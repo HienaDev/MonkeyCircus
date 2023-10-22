@@ -290,7 +290,10 @@ MonoBehaviour:
   playerAnimator: {fileID: 3977921088953190486}
   deadSprite: {fileID: 0}
   jump: {fileID: 0}
-  frozenScreenTime: 0
+  victoryMusic: {fileID: 0}
+  deathSound: {fileID: 0}
+  frozenScreenTime: 1
+  resetTimer: 4
 --- !u!95 &3977921088953190486
 Animator:
   serializedVersion: 5
