@@ -12,6 +12,8 @@ public class GetToPlayer : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
 
     private GameObject cageDoor;
+
+    private GameObject keySound;
     
 
     // Start is called before the first frame update
@@ -20,7 +22,8 @@ public class GetToPlayer : MonoBehaviour
         player = GameObject.Find("Monkey");
         rb = GetComponent<Rigidbody2D>();
         cageDoor = GameObject.Find("CageDoor");
-        
+        keySound = GameObject.Find("Key Sound");
+
     }
 
     // Update is called once per frame
@@ -37,10 +40,11 @@ public class GetToPlayer : MonoBehaviour
         int x = 1 << collision.gameObject.layer;
 
 
-
+            
         // Trigger Clown Falling
         if (x == playerLayer.value)
         {
+            keySound.GetComponent<AudioSource>().Play();
             cageDoor.GetComponent<CageGoUp>().TriggerCage();
             Destroy(gameObject);
         }
