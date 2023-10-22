@@ -58,7 +58,7 @@ public class CollapsingPlatform : MonoBehaviour
         
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         int x = 1 << collision.gameObject.layer;
 
@@ -67,7 +67,7 @@ public class CollapsingPlatform : MonoBehaviour
         if (x == playerLayer.value && backInPlace)
         {
 
-            
+
             startExplosion = Time.time;
 
             exploding = true;
@@ -77,7 +77,6 @@ public class CollapsingPlatform : MonoBehaviour
 
         }
     }
-
 
     public void Fall()
     {

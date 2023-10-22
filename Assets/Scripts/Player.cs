@@ -72,11 +72,11 @@ public class Player : MonoBehaviour
             Flip();
             Animations();
         }
-        else if(Time.realtimeSinceStartup - justDied > resetTimer && !dance)
+        else if(Time.realtimeSinceStartup - justDied > resetTimer && dead)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        else if (Time.realtimeSinceStartup - justDied > frozenScreenTime)
+        else if (Time.realtimeSinceStartup - justDied > frozenScreenTime && dead)
         {
             Time.timeScale = 1.0f;
             courtinScript.CloseCourtins();
