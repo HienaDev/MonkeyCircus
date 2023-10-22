@@ -13,36 +13,80 @@ public class CollapsingPlatform : MonoBehaviour
     private bool exploding = false;
     private float startExplosion;
 
+    private Vector3 startPosition;
+
+    private bool isFalling = false;
+    private bool backInPlace = true;
+
+    private Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPosition = transform.position;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time -startExplosion > timeToExplode && exploding)
+        Debug.Log(backInPlace);
+        if (Time.time - startExplosion > timeToExplode && exploding)
         {
             balloon1.GetComponent<Animator>().SetTrigger("explode");
             balloon2.GetComponent<Animator>().SetTrigger("explode");
+            exploding = false;
         }
+
+
+
+        if (!isFalling && Vector3.Distance(transform.position, startPosition) < 2)
+        {
+            rb.velocity = Vector3.zero;
+
+            // Spaghetii
+            if (Time.time - startExplosion > 4)
+                backInPlace = true;
+        }
+
+        if (rb.velocity == Vector2.zero && isFalling)
+        {
+            isFalling = false;
+            balloon1.GetComponent<Animator>().SetTrigger("fill");
+            balloon2.GetComponent<Animator>().SetTrigger("fill");
+        }
+        
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         int x = 1 << collision.gameObject.layer;
 
 
 
-        // Trigger Clown Falling
-        if (x == playerLayer.value)
+        if (x == playerLayer.value && backInPlace)
         {
 
-            exploding = true;
+            
             startExplosion = Time.time;
 
-        
+            exploding = true;
+            backInPlace = false;
+
+
+
         }
+    }
+
+
+    public void Fall()
+    {
+        rb.velocity = new Vector3(0f, -50f, 0f);
+        isFalling = true;
+    }
+
+    public void GoUp()
+    {
+        rb.velocity = new Vector3(0f, 20f, 0f);
     }
 }
