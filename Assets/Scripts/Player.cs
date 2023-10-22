@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Sprite                     deadSprite;
 
     [SerializeField] private AudioSource                jump;
+    [SerializeField] private AudioSource                victoryMusic;
+    [SerializeField] private AudioSource                deathSound;
 
     private static bool                                 modernControls;
     private string                                      verticalInput;
@@ -42,13 +45,18 @@ public class Player : MonoBehaviour
     private bool                                        dance = false;
 
     private float                                       justDied;
-    [SerializeField] float                              frozenScreenTime;
+    [SerializeField] private float                              frozenScreenTime;
+    [SerializeField] private float resetTimer;
+
+    private CloseCourtin courtinScript;
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
+
+        courtinScript = GameObject.Find("cortinas").GetComponent<CloseCourtin>();
 
         DefineControls(modernControls);
     }
@@ -64,9 +72,14 @@ public class Player : MonoBehaviour
             Flip();
             Animations();
         }
+        else if(Time.realtimeSinceStartup - justDied > resetTimer)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         else if (Time.realtimeSinceStartup - justDied > frozenScreenTime)
         {
-            Time.timeScale = 1.0f;   
+            Time.timeScale = 1.0f;
+            courtinScript.CloseCourtins();
         }
 
     }
@@ -158,6 +171,7 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector3(0f, jumpSpeed, 0f);
 
         playerAnimator.SetTrigger("dead");
+        deathSound.Play();
 
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
 

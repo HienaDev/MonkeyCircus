@@ -6,10 +6,12 @@ using UnityEngine.Events;
 public class ClownCounting : MonoBehaviour
 {
     [SerializeField] private UnityEvent loadToLevel2 = new UnityEvent();
+    [SerializeField] private UnityEvent closeCourtin = new UnityEvent();
     [SerializeField] private Player monkey;
     [SerializeField] private float timerDancing;
+    [SerializeField] private float closeCourtinTimer;
 
-    
+
     private float justFinished;
     private bool dancing = false;
 
@@ -21,6 +23,10 @@ public class ClownCounting : MonoBehaviour
 
     private void Update()
     {
+        if (Time.time - justFinished >= closeCourtinTimer && dancing)
+        { 
+            closeCourtin.Invoke();
+        }
         if (Time.time - justFinished >= timerDancing && dancing)
         {
             loadToLevel2.Invoke();
