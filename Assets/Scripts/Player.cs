@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         playerSprite = gameObject.GetComponent<SpriteRenderer>();
 
-        SetControls(false);
+        SetControls(true);
         DefineControls(modernControls);
     }
 
@@ -141,6 +141,11 @@ public class Player : MonoBehaviour
         }
         else
             rb.velocity = new Vector2(velocity_x, rb.velocity.y + added_velocity_y);
+
+        if (rb.velocity.y > 300f)
+        {
+            rb.velocity = new Vector2(velocity_x, 300f);
+        }
     }
 
     private void CheckGround()
