@@ -2078,7 +2078,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: SampleScene
+          m_StringArgument: Level 1
           m_BoolArgument: 0
         m_CallState: 2
   monkey: {fileID: 797595845}
@@ -4603,7 +4603,7 @@ PrefabInstance:
     - target: {fileID: 3578852487980168176, guid: e15a3c938d7a14e4c9a07ba40fa25448, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 6200000, guid: a4bec21ebac44bf4882566b52c4f86f7, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 3578852487980168176, guid: e15a3c938d7a14e4c9a07ba40fa25448, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 32
